@@ -102,9 +102,12 @@ export default class GameEntityGui extends ComponentSingleton {
     update(game) {
         // const elapsed = game.time.elapsedMS;
         // const timer = game.time.time;
-        if(!this.game.input.activePointer.rightButton.isDown) return;
         if(!entities[this.crosshair.crosshairName]) return;
-        this.crosshair.setCrosshair('arrow');
+
+        // проверяе на ПКМ или дабл клик/тап и спрасываем курсор в стрелку
+        if(this.game.input.activePointer.rightButton.isDown) return this.crosshair.setCrosshair('arrow');
+        if(this.game.input.activePointer.msSinceLastClick<220) return this.crosshair.setCrosshair('arrow');
+        
     }
 
     paused() {

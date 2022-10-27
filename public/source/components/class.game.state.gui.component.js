@@ -258,10 +258,6 @@ export default class GameStateGui extends ComponentSingleton {
             return true;
         })
 
-        if (!this.game.input.activePointer.rightButton.isDown) return;
-        if (!entities[this.crosshair.crosshairName]) return;
-        this.crosshair.setCrosshair('arrow');
-
     }
 
 
