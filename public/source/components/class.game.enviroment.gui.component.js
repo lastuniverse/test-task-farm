@@ -40,7 +40,7 @@ export default class GameEnviromentGui extends Component {
         const width = size * config.width / 17;
         const height = size * config.height / 16;
 
-        let temp = 0;
+        let temp = 1;
         for (let y = 0; y <= config.height + height; y += height) {
             temp = 1 - temp;
             for (let x = 0; x <= config.width + width; x += width) {
