@@ -36,12 +36,13 @@ export default class GameEnviromentGui extends Component {
         console.log('Component.make', 'GameEnviromentGui');
 
         // создаем графические элементы сцены
-        const size = 1.1;
+        const size = 1.0;
         const width = size * config.width / 17;
-        const height = size * config.height / 17;
+        const height = size * config.height / 16;
 
-
+        let temp = 0;
         for (let y = 0; y <= config.height + height; y += height) {
+            temp = 1 - temp;
             for (let x = 0; x <= config.width + width; x += width) {
                 const wy = y - config.center.y * 1.5;
                 const wx = x - config.center.x;
@@ -55,8 +56,8 @@ export default class GameEnviromentGui extends Component {
 
                 const sprite = new Phaser.Sprite(
                     this.game,
-                    x + width * 0.2 * (Math.random() - 0.5),
-                    y + height * 0.2 * (Math.random() - 0.5),
+                    x + temp * width / 2,// + width * 0.4 * (Math.random() - 0.5),
+                    y + height * 0.5 * (Math.random() - 0.5),
                     spriteData.spriteName
                 );
                 sprite.frameName = spriteData.frameName;
@@ -121,7 +122,8 @@ var tilesPresets = {
     dry: {
         // greengrass: 3,
         stounegrass: 1,
-        drygrass: 2,
+        drygrass: 5,
+        greengrass: 3,
     },
     forest: {
         greengrass: 1,
@@ -160,7 +162,7 @@ var tilesPresetsData = {
             'grass.stone.type.02.1', 'grass.stone.type.02.2', 'grass.stone.type.02.3', 'grass.stone.type.02.4',
             'grass.stone.type.03.1', 'grass.stone.type.03.2', 'grass.stone.type.03.3', 'grass.stone.type.03.4',
         ]
-    },    
+    },
     drygrass: {
         spriteName: 'tileset_grass',
         frames: [
